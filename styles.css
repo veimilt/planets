@@ -1,0 +1,643 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  color-scheme: dark;
+
+  --bg: #05070a;
+  --surface: #0d1117;
+  --surface-soft: #131922;
+
+  --text: #f5f7fa;
+  --text-muted: #9aa4b2;
+  --border: rgba(255, 255, 255, 0.12);
+
+  --accent: rgb(0, 0, 255);
+  --accent-gradient: rgb(183, 183, 250);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 4rem;
+
+  --content-width: 1200px;
+  --content-width-xl: 1400px;
+  --content-width-xxl: 1600px;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: blue;
+  color: var(--text);
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+p {
+  max-width: 65ch;
+  color: var(--text-muted);
+}
+
+small {
+  color: var(--text-muted);
+}
+
+/* Links */
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: dodgerblue;
+}
+
+/* Media */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* Forms */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Focus */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Lists */
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Tables */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* Dialog */
+
+dialog {
+  width: min(90%, 700px);
+
+  padding: 0;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.75);
+  backdrop-filter: blur(6px);
+}
+
+/* Details */
+
+details {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+details[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+/* Layout */
+
+.container {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin: 0 auto;
+}
+
+.container-xl {
+  width: min(calc(100% - 2rem), var(--content-width-xl));
+  margin: 0 auto;
+}
+
+.container-xxl {
+  width: min(calc(100% - 2rem), var(--content-width-xxl));
+  margin: 0 auto;
+}
+
+.section {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Utility */
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* planets grid (new) */
+
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.section-label {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.planets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.planet-card {
+  display: block;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+
+  padding: 1rem;
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    background-color var(--transition-normal);
+}
+
+.planet-card:hover {
+  /* transform: translateY(-4px); */
+  border-color: rgba(255, 255, 255, 0.25);
+  /* background: var(--surface); */
+}
+
+.planet-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.planet-card figure {
+  margin: 0;
+}
+
+.planet-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.planet-card:nth-child(1) img {
+  scale: 0.35;
+  view-transition-name: mercury-img;
+} /* Mercury */
+.planet-card:nth-child(2) img {
+  scale: 0.48;
+  view-transition-name: venus-img;
+} /* Venus */
+.planet-card:nth-child(3) img {
+  scale: 0.5;
+  view-transition-name: earth-img;
+} /* Earth */
+.planet-card:nth-child(4) img {
+  scale: 0.4;
+  view-transition-name: mars-img;
+} /* Mars */
+.planet-card:nth-child(5) img {
+  scale: 0.9;
+  view-transition-name: jupiter-img;
+} /* Jupiter */
+.planet-card:nth-child(6) img {
+  scale: 1.05;
+  view-transition-name: saturn-img;
+} /* Saturn + rings */
+.planet-card:nth-child(7) img {
+  scale: 0.63;
+  view-transition-name: uranus-img;
+} /* Uranus */
+.planet-card:nth-child(8) img {
+  scale: 0.61;
+  view-transition-name: neptune-img;
+} /* Neptune */
+.planet-card:nth-child(9) img {
+  scale: 0.25;
+  view-transition-name: pluto-img;
+} /* Pluto */
+
+.planet-card figcaption {
+  padding: 1rem 1.25rem;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .planets-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .planets-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* scroll snap */
+
+.scrollsnap-xxl-container {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  width: 100%;
+  background:
+    radial-gradient(
+      ellipse 70% 45% at center,
+      color-mix(in oklab, var(--accent-gradient) 18%, transparent) 0%,
+      color-mix(in oklab, var(--accent-gradient) 8%, transparent) 40%,
+      transparent 100%
+    ),
+    var(--bg);
+}
+.scrollsnap-header,
+.scrollsnap-header .section-label {
+  max-width: 100%;
+  text-align: center;
+}
+
+.planet-scroller {
+  --scroller-fade: 2rem;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 80%);
+  gap: 1rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+
+  padding: 1rem 2rem;
+
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgb(0 0 0 / 0.043) calc(var(--scroller-fade) * 0.125),
+    rgb(0 0 0 / 0.156) calc(var(--scroller-fade) * 0.25),
+    rgb(0 0 0 / 0.316) calc(var(--scroller-fade) * 0.375),
+    rgb(0 0 0 / 0.5) calc(var(--scroller-fade) * 0.5),
+    rgb(0 0 0 / 0.684) calc(var(--scroller-fade) * 0.625),
+    rgb(0 0 0 / 0.844) calc(var(--scroller-fade) * 0.75),
+    rgb(0 0 0 / 0.957) calc(var(--scroller-fade) * 0.875),
+    black var(--scroller-fade),
+    black calc(100% - var(--scroller-fade)),
+    rgb(0 0 0 / 0.957) calc(100% - var(--scroller-fade) * 0.875),
+    rgb(0 0 0 / 0.844) calc(100% - var(--scroller-fade) * 0.75),
+    rgb(0 0 0 / 0.684) calc(100% - var(--scroller-fade) * 0.625),
+    rgb(0 0 0 / 0.5) calc(100% - var(--scroller-fade) * 0.5),
+    rgb(0 0 0 / 0.316) calc(100% - var(--scroller-fade) * 0.375),
+    rgb(0 0 0 / 0.156) calc(100% - var(--scroller-fade) * 0.25),
+    rgb(0 0 0 / 0.043) calc(100% - var(--scroller-fade) * 0.125),
+    transparent 100%
+  );
+  scrollbar-width: none; /* Firefox */
+}
+
+.planet-scroller::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+.planet-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 1.5rem;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: color-mix(in oklab, var(--surface) 35%, transparent);
+  scroll-snap-align: center;
+}
+
+.planet-info-card h3 {
+  font-size: 1.5rem;
+}
+
+.planet-info-card p {
+  flex-grow: 1;
+}
+
+.planet-info-card dl {
+  display: grid;
+  gap: 0.75rem;
+
+  margin: 0;
+}
+
+.planet-info-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding-top: 0.75rem;
+
+  border-top: 1px solid var(--border);
+}
+
+.planet-info-card dt {
+  color: var(--text-muted);
+}
+
+.planet-info-card dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .planet-scroller {
+    grid-auto-columns: 50%;
+    padding: 1rem 3rem;
+
+    --scroller-fade: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .planet-scroller {
+    grid-auto-columns: calc(33% - (2rem / 3));
+    padding: 1rem 10rem;
+
+    --scroller-fade: 10rem;
+  }
+}
+
+.scroller-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.scroller-button {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--text);
+
+  box-shadow:
+    0 8px 24px color-mix(in srgb, var(--bg) 80%, transparent),
+    0 3px 8px color-mix(in srgb, var(--bg) 60%, transparent);
+}
+
+.scroller-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.scroller-button-left svg {
+  transform: translateX(-1px);
+}
+.scroller-button-right svg {
+  transform: translateX(1px);
+}
+
+/* view transitions */
+
+@view-transition {
+  navigation: auto;
+}
+
+.mercury-big {
+  view-transition-name: mercury-img;
+}
+.venus-big {
+  view-transition-name: venus-img;
+}
+.earth-big {
+  view-transition-name: earth-img;
+}
+.mars-big {
+  view-transition-name: mars-img;
+}
+.jupiter-big {
+  view-transition-name: jupiter-img;
+}
+.saturn-big {
+  view-transition-name: saturn-img;
+}
+.uranus-big {
+  view-transition-name: uranus-img;
+}
+.neptune-big {
+  view-transition-name: neptune-img;
+}
+.pluto-big {
+  view-transition-name: pluto-img;
+}
